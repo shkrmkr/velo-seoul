@@ -1,0 +1,152 @@
+$background: #35495e;
+$primary: #42b883;
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: $background;
+}
+
+.map {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.station-info {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  right: 50%;
+  transform: translateX(50%);
+  width: 50%;
+  padding: 20px 10px;
+  background-color: $background;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.8;
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  &__info {
+    margin-top: 10px;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 80%;
+    padding: 20px 25px;
+  }
+}
+
+.location-marker {
+  img {
+    width: 30px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.top-bar {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: rgba($background, 0.8);
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+
+  &__logo {
+    height: 30px;
+  }
+
+  &__btn {
+    border: 2px solid $primary;
+    border-radius: 2px;
+    display: flex;
+    background-color: $background;
+    padding: 5px 15px;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    color: $primary;
+    font-weight: bold;
+    transition: all 0.5s;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-2px);
+      box-shadow: 0px 19px 21px -4px rgba(0, 0, 0, 0.36);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  &__locate-icon {
+    margin-left: 10px;
+  }
+}
+
+.legend {
+  position: absolute;
+  display: flex;
+  top: 57px;
+  left: 5px;
+  z-index: 10;
+  background-color: rgba($background, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 20px;
+    }
+
+    & + & {
+      margin-left: 20px;
+    }
+  }
+}
