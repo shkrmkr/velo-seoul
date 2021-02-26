@@ -6,18 +6,18 @@ import SearchBar from "./components/SearchBar";
 import useStations from "./hooks/useStations";
 
 const App: React.FC = () => {
-  const { loading, stations } = useStations();
+  const { loading, stations, error } = useStations();
 
   return (
     <div className="app">
-      {!loading ? (
+      {loading ? (
+        <Ellipsis size={200} className="spinner" />
+      ) : (
         <>
           <SearchBar />
           <Legend />
           <Map stations={stations} />
         </>
-      ) : (
-        <Ellipsis size={200} className="spinner" />
       )}
     </div>
   );

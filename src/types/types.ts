@@ -1,5 +1,5 @@
 export interface ResponseData {
-  getStationListHist: RentBikeStatus;
+  rentBikeStatus: RentBikeStatus;
 }
 
 export interface RentBikeStatus {

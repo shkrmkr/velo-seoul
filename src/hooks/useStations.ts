@@ -1,40 +1,34 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { ResponseData, Station } from "../types/types";
-
-const api = axios.create({
-  baseURL: `http://openapi.seoul.go.kr:8088/${process.env.REACT_APP_SEOUL_BIKE_API_KEY}/json/bikeList`,
-});
+import { Station } from "../types/types";
 
 const useStations = () => {
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const promises = [
-      api.get<ResponseData>("/1/1000/1"),
-      api.get<ResponseData>("/1001/2000/1"),
-    ];
+    setLoading(true);
+    setError(null);
 
     (async () => {
-      setLoading(true);
-
-      const responses = await Promise.all(promises);
-
-      const tempStations: Station[] = [];
-
-      responses.forEach((res) => {
-        console.log(res.data);
-        tempStations.push(...res.data.getStationListHist.row);
-      });
-
-      setStations(tempStations);
+      try {
+        const res = await fetch("/.netlify/functions/token-hider");
+        const data = await res.json();
+        setStations(data.rentBikeStatus.row);
+        if (!res.ok) {
+          throw new Error(
+            "서울 공공 데이터 API에 문제가 있습니다. 잠시 후에 다시 시도해주세요."
+          );
+        }
+      } catch (error) {
+        setError(error.message);
+      }
 
       setLoading(false);
     })();
   }, []);
 
-  return { stations, loading };
+  return { stations, loading, error };
 };
 
 export default useStations;
