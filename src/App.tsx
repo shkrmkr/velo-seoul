@@ -1,12 +1,14 @@
 import React from "react";
 import { Ellipsis } from "react-css-spinners";
-import Legend from "./components/Legend";
-import Map from "./components/Map";
-import SearchBar from "./components/SearchBar";
-import useStations from "./hooks/useStations";
+import { Legend } from "./components/Legend";
+import { Map } from "./components/Map";
+import { TopBar } from "./components/TopBar";
+import { useUserLocation } from "./contexts/UserLocation";
+import { useStations } from "./hooks/useStations";
 
-const App: React.FC = () => {
-  const { loading, stations, error } = useStations();
+export const App: React.FC = () => {
+  const { loading, stations } = useStations();
+  const { userLocation } = useUserLocation();
 
   return (
     <div className="app">
@@ -14,13 +16,15 @@ const App: React.FC = () => {
         <Ellipsis size={200} className="spinner" />
       ) : (
         <>
-          <SearchBar />
+          <TopBar />
           <Legend />
-          <Map stations={stations} />
+          <Map
+            stations={stations}
+            center={userLocation}
+            zoomLevel={userLocation && 16}
+          />
         </>
       )}
     </div>
   );
 };
-
-export default App;

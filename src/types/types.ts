@@ -8,6 +8,11 @@ export interface RentBikeStatus {
   row: Station[];
 }
 
+export interface Coord {
+  lat: number;
+  lng: number;
+}
+
 export interface Station {
   rackTotCnt: string;
   stationName: string;

@@ -3,7 +3,7 @@ import marker13 from "../assets/images/map-marker13.png";
 import marker46 from "../assets/images/map-marker46.png";
 import marker7 from "../assets/images/map-marker7.png";
 
-export default function Legend() {
+export const Legend: React.FC = () => {
   return (
     <div className="legend">
       <div className="legend__item">
@@ -24,4 +24,4 @@ export default function Legend() {
       </div>
     </div>
   );
-}
+};

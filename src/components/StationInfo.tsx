@@ -10,7 +10,7 @@ interface Props {
   onClose: () => void;
 }
 
-const StationInfo: React.FC<Props> = ({ stationInfo, onClose }) => {
+export const StationInfo: React.FC<Props> = ({ stationInfo, onClose }) => {
   const { stationName, availableBikeCount, rackCount } = stationInfo;
 
   return (
@@ -26,5 +26,3 @@ const StationInfo: React.FC<Props> = ({ stationInfo, onClose }) => {
     </div>
   );
 };
-
-export default StationInfo;

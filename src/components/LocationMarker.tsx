@@ -1,8 +1,8 @@
 import React from "react";
 import marker0 from "../assets/images/map-marker0.png";
-import marker7 from "../assets/images/map-marker7.png";
 import marker13 from "../assets/images/map-marker13.png";
 import marker46 from "../assets/images/map-marker46.png";
+import marker7 from "../assets/images/map-marker7.png";
 
 interface Props {
   lat: number;
@@ -11,7 +11,7 @@ interface Props {
   onClick: () => void;
 }
 
-const LocationMarker: React.FC<Props> = ({
+export const LocationMarker: React.FC<Props> = ({
   lat,
   lng,
   availableBikeCount,
@@ -35,5 +35,3 @@ const LocationMarker: React.FC<Props> = ({
     </div>
   );
 };
-
-export default LocationMarker;

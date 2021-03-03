@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface Props {
   pointCount: number;
@@ -6,13 +6,17 @@ interface Props {
   lng: number;
 }
 
-export default function ClusterMarker({ pointCount }: Props) {
+export const ClusterMarker: React.FC<Props> = ({ pointCount }) => {
+  const clusterSize = useMemo(() => Math.min(50, 20 + pointCount), [
+    pointCount,
+  ]);
+
   return (
     <div
       style={{
         boxSizing: "content-box",
-        width: `${30 + pointCount / 20}px`,
-        height: `${30 + pointCount / 20}px`,
+        width: `${clusterSize}px`,
+        height: `${clusterSize}px`,
         backgroundColor: "#35495e",
         color: "#fff",
         fontWeight: "bold",
@@ -29,4 +33,4 @@ export default function ClusterMarker({ pointCount }: Props) {
       {pointCount}
     </div>
   );
-}
+};

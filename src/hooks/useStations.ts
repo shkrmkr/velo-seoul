@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Station } from "../types/types";
 
-const useStations = () => {
+export const useStations = () => {
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,5 +30,3 @@ const useStations = () => {
 
   return { stations, loading, error };
 };
-
-export default useStations;
