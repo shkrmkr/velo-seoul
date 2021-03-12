@@ -9,6 +9,7 @@ interface Props {
   lng: number;
   availableBikeCount: number;
   onClick: () => void;
+  $hover?: boolean;
 }
 
 export const LocationMarker: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const LocationMarker: React.FC<Props> = ({
   lng,
   availableBikeCount,
   onClick,
+  $hover,
 }) => {
   const marker = () => {
     if (availableBikeCount >= 7) {
@@ -30,7 +32,7 @@ export const LocationMarker: React.FC<Props> = ({
   };
 
   return (
-    <div className="location-marker" onClick={onClick}>
+    <div className={`location-marker ${$hover && "hover"}`} onClick={onClick}>
       {marker()}
     </div>
   );

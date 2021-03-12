@@ -58,7 +58,7 @@ export const Map: React.FC<Props> = ({ center, zoomLevel, stations }) => {
         }}
         defaultZoom={12}
         yesIWantToUseGoogleMapApiInternals
-        options={{ fullscreenControl: false }}
+        options={{ fullscreenControl: false, gestureHandling: "greedy" }}
         center={center}
         zoom={zoom}
         onGoogleApiLoaded={({ map }) => {
