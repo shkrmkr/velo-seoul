@@ -12,9 +12,14 @@ export const useStations = () => {
 
     (async () => {
       try {
-        const res = await fetch("/.netlify/functions/token-hider");
+        const res = await fetch("/.netlify/functions/token-hider", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await res.json();
-        setStations(data.rentBikeStatus.row);
+        console.log(data);
+        setStations(data);
         if (!res.ok) {
           throw new Error(
             "서울 공공 데이터 API에 문제가 발생했습니다. 잠시 후에 다시 시도해주세요."
