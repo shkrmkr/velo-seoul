@@ -17,7 +17,7 @@ export const useStations = () => {
         setStations(data.rentBikeStatus.row);
         if (!res.ok) {
           throw new Error(
-            "서울 공공 데이터 API에 문제가 있습니다. 잠시 후에 다시 시도해주세요."
+            "서울 공공 데이터 API에 문제가 발생했습니다. 잠시 후에 다시 시도해주세요."
           );
         }
       } catch (error) {

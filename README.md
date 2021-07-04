@@ -2,7 +2,7 @@
 
 [Live Demo](https://velo-seoul.netlify.app)
 
-## tech
+## stack
 
 React, TypeScript, Sass, Google Maps API, 서울시 공공 데이터 API, Netlify
 
